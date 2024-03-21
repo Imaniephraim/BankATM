@@ -13,7 +13,7 @@ public class LoginPanel extends JPanel {
 
     private ATMApp app;
 
-    public LoginPanel (ATMApp APP) {
+    public LoginPanel (ATMApp app) {
         this.app = app;
         setLayout(new GridBagLayout());
 
@@ -74,7 +74,7 @@ public class LoginPanel extends JPanel {
                 try {
                     User user = DatabaseHelper.getUserByUsername(username);
                     if (user != null && user.getPassword().equals(password)) {
-                        //app.setUser();
+                        app.setUser(user);
                         app.showPanel("Dashboard");
                     }else {
                         JOptionPane.showMessageDialog(LoginPanel.this, "Invalid Username or Password!", " Login Error", JOptionPane.ERROR_MESSAGE);
@@ -92,10 +92,7 @@ public class LoginPanel extends JPanel {
             app.showPanel("Registration");
         }
     }
-
-
-
-    }
+}
 
 
 

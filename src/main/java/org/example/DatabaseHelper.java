@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DatabaseHelper {
 
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432?bankDB";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/bankDB";
     private static final String DB_USER ="postgres";
     private static final String DB_PASSWORD ="ephraIms@ccount";
 
@@ -42,7 +42,7 @@ public class DatabaseHelper {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                int accountId = rs.getInt("accountId");
+                int accountId = rs.getInt("account_id");
                 String accountNumber = rs.getString("account_number");
                 double balance = rs.getDouble("balance");
 
@@ -61,6 +61,7 @@ public class DatabaseHelper {
             stmt.setDouble(2, amount);
             stmt.setString(3, transactionType);
             stmt.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+            stmt.executeUpdate();
         }
     }
     //a method to update an account balance
@@ -127,7 +128,7 @@ public class DatabaseHelper {
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setString(3, name);
-            stmt.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+            stmt.executeUpdate();
         }
     }
 

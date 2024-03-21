@@ -19,10 +19,10 @@ public class ATMApp extends JFrame {
 
         mainPanel = new JPanel(new CardLayout());
         loginPanel = new LoginPanel(this);
-        registrationPanel = new RegistrationPanel();
+        registrationPanel = new RegistrationPanel(this);
 
-        mainPanel.add(loginPanel, "login");
-        // mainPanel.add(registrationPanel, "Registration");
+        mainPanel.add(loginPanel, "Login");
+        mainPanel.add(registrationPanel, "Registration");
 
         add(mainPanel, BorderLayout.CENTER);
         showPanel("Login");
